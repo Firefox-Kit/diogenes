@@ -1,20 +1,15 @@
 {
-  "name": "diogenes-marketplace",
-  "owner": {
-    "name": "diogenes-project"
-  },
-  "metadata": {
-    "description": "Diogenes plugin marketplace for the deterministic AI research methodology."
-  },
+  "name": "diogenes-fork",
+  "owner": { "name": "Firefox-Kit" },
   "plugins": [
     {
       "name": "diogenes",
       "source": {
-        "source": "url",
-        "url": "https://github.com/diogenes-project/diogenes.git",
-        "ref": "develop"
+        "source": "github",
+        "repo": "<내ID>/diogenes",
+        "sha": "d30d58ca3f57a34b4feb5ba3592da506eb5681f1"
       },
-      "description": "Deterministic AI research methodology combining ICD 203, GRADE, PRISMA, Cochrane, and five other frameworks into an evidence-based process. Anti-sycophantic by design."
+      "description": "diogenes pinned to reviewed commit d30d58c"
     }
   ]
 }
