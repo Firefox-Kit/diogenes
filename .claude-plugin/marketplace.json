@@ -6,7 +6,7 @@
       "name": "diogenes",
       "source": {
         "source": "github",
-        "repo": "<내ID>/diogenes",
+        "repo": "Firefox-Kit/diogenes",
         "sha": "d30d58ca3f57a34b4feb5ba3592da506eb5681f1"
       },
       "description": "diogenes pinned to reviewed commit d30d58c"
