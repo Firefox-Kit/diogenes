@@ -1,0 +1,47 @@
+# Guards the prompts the plugin actually loads.
+# - compiled prompts must be regenerated from the reviewed sources
+# - the security sections must be present everywhere they are needed
+# - the marketplace must pin the plugin to a full commit SHA
+# Pin actions/checkout to a full commit SHA in your fork.
+name: Prompt guard
+
+on:
+  pull_request:
+  push:
+    branches: [develop]
+
+permissions:
+  contents: read
+
+jobs:
+  prompt-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Compiled prompts match their sources
+        run: |
+          python3 -X utf8 scripts/compile-prompts.py
+          git diff --exit-code -- skills/research/prompts/compiled standalone/research.md
+
+      - name: Security sections are present
+        run: |
+          grep -q '^## Security (read before any command)' skills/research/SKILL.md
+          grep -q '^## Security Boundaries' src/diogenes/prompts/common-guidelines.md
+          for f in skills/research/prompts/compiled/*.md standalone/research.md; do
+            grep -q '^## Security Boundaries' "$f" || { echo "missing in $f"; exit 1; }
+          done
+
+      - name: Marketplace pins a full commit SHA
+        run: |
+          python3 - <<'PY'
+          import json, re
+          market = json.load(open(".claude-plugin/marketplace.json", encoding="utf-8"))
+          for plugin in market["plugins"]:
+              sha = plugin["source"].get("sha", "")
+              if not re.fullmatch(r"[0-9a-f]{40}", sha):
+                  raise SystemExit(f"{plugin['name']}: source.sha must be a full 40-character SHA")
+          print("marketplace pin ok")
+          PY
