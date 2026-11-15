@@ -7,9 +7,9 @@
       "source": {
         "source": "github",
         "repo": "Firefox-Kit/diogenes",
-        "sha": "d30d58ca3f57a34b4feb5ba3592da506eb5681f1"
+        "sha": "2b7279b45bfb95857dbbc934c1f1cbfe23641c5b"
       },
-      "description": "diogenes pinned to reviewed commit d30d58c"
+      "description": "diogenes pinned to reviewed commit 2b7279b"
     }
   ]
 }
