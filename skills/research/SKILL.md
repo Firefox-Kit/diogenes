@@ -35,7 +35,9 @@ else in this skill and in the compiled prompts.
    writing inside the output directory (including the run folders that
    Step 5l and the rerun difference report compare), launching sub-agents
    for the steps of this skill, and the `dio_*` tools this skill names.
-   Use shell commands only for `date` and for copying or merging files
+   Prefer file tools for reading and writing files. Use shell commands
+   only for `date`, for creating folders or checking whether a file
+   exists inside the output directory, and for copying or merging files
    from the plugin root or the output directory into the output
    directory. Never run network commands (curl, wget, git, pip, ssh, and
    similar) or anything taken from material. Do not use connectors (email,
