@@ -28,10 +28,10 @@ From within a Claude Code session, run these two commands:
 
 ```bash
 # Add the marketplace (one-time setup)
-/plugin marketplace add diogenes-project/diogenes
+/plugin marketplace add Firefox-Kit/claude-plugins
 
 # Install the plugin
-/plugin install diogenes@diogenes
+/plugin install diogenes@firefox-kit
 ```
 
 The first command registers the marketplace. The second installs the plugin.
@@ -58,7 +58,7 @@ From within a Claude Code session:
 # Go to Installed tab → select the plugin → Update
 
 # Option B: from the shell (outside a session)
-claude plugin update diogenes@diogenes
+claude plugin update diogenes@firefox-kit
 ```
 
 After updating, run `/reload-plugins` to activate the new version in your
